@@ -1,4 +1,7 @@
 const fs = require("fs");
+const crypto = require("crypto");
+
+const start = Date.now();
 
 setTimeout(() => console.log("Timer 1 finished"), 0);
 setImmediate(() => console.log("Immediate 1 finished"));
@@ -12,6 +15,23 @@ fs.readFile("t../text-file.txt", () => {
   setImmediate(() => console.log("Immediate 2 finished"));
 
   process.nextTick(() => console.log("Process.nextTick"));
+
+  // default thread pool size = 4
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - start, "ms Password encrypted")
+  });
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - start, "ms Password encrypted")
+  });
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - start, "ms Password encrypted")
+  });
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - start, "ms Password encrypted")
+  });
+  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
+    console.log(Date.now() - start, "ms Password encrypted")
+  });
 });
 
 console.log("Hello from the top level code");
