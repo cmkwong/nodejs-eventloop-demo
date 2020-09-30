@@ -17,22 +17,24 @@ fs.readFile("t../text-file.txt", () => {
 
   process.nextTick(() => console.log("Process.nextTick"));
 
-  // default thread pool size = 4
-  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
-    console.log(Date.now() - start, "ms Password encrypted")
-  });
-  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
-    console.log(Date.now() - start, "ms Password encrypted")
-  });
-  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
-    console.log(Date.now() - start, "ms Password encrypted")
-  });
-  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
-    console.log(Date.now() - start, "ms Password encrypted")
-  });
-  crypto.pbkdf2("password", "salt", 100000, 1024, "sha512", () => {
-    console.log(Date.now() - start, "ms Password encrypted")
-  });
+  // use the sync to block the thread: https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/learn/lecture/15064746?start=974#notes
+  crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
+  console.log(Date.now() - start, "ms Password encrypted");
+
+  crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
+  console.log(Date.now() - start, "ms Password encrypted");
+
+  crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
+  console.log(Date.now() - start, "ms Password encrypted");
+
+  crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
+  console.log(Date.now() - start, "ms Password encrypted");
+
+  crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
+  console.log(Date.now() - start, "ms Password encrypted");
+
+  crypto.pbkdf2Sync("password", "salt", 100000, 1024, "sha512");
+  console.log(Date.now() - start, "ms Password encrypted");
 });
 
 console.log("Hello from the top level code");
